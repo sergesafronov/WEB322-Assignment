@@ -1,7 +1,8 @@
 # WEB322-Serge-Safronov
-Seneca WEB322
-Section NFF
 
+Seneca WEB322
+
+Section NFF
 
 ## Linkst to Assignments branch:
 
