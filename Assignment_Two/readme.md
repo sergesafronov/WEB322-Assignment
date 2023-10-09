@@ -1,7 +1,12 @@
 # Readme
-## Application usage
-To login please use the following credentials:
+## Application start
 
-Username: admin
+To run application please use `npm start`
 
-Password: 123
+Then connect to `localhost:8080`
+
+## Login credentials:
+
+Username: `admin`
+
+Password: `123`
