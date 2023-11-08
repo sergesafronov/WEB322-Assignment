@@ -2,7 +2,7 @@
 
 Section NFF
 
-## Links to Assignments branch
+## Links to the Assignments branch
 
 [Assignment One](https://github.com/sergesafronov/WEB322-Serge-Safronov/tree/assignments/Assignment_One)
 
