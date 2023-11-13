@@ -13,13 +13,13 @@ To run application please use `npm start`
 
 Then connect to `localhost:8080`
 
-## Login:
+## Login
 
 To login please use any email and password from `data/fakeUsers.json`
 
 Example - Email: `Kristina68@hotmail.com` Password:`0p91XkC2iIy44CF`
 
-## Check endpoints:
+## Endpoints check
 
 To check endpoints go to https://www.postman.com/ download, install and run Postman Agent to be able to check local hosts.
 
