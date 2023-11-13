@@ -1,24 +1,20 @@
-// Import necessary modules
 const express = require('express');
 const router = express.Router();
+const AuthenticationService = require('../services/authentication');
+const authService = new AuthenticationService();
 
-// Hardcoded credentials for admin
-const ADMIN = {
-    username: 'admin',
-    password: '123'
-};
-
-// GET route for the login page
 router.get('/', (req, res) => {
     res.render('login', { title: 'Login Page' });
 });
 
-// POST route for the login logic
 router.post('/', (req, res) => {
-    if (req.body.username === ADMIN.username && req.body.password === ADMIN.password) {
+    const { email, password } = req.body; 
+    const result = authService.authenticate(email, password);
+
+    if (result.isAuthenticated) {
         res.redirect('/list');
     } else {
-        res.redirect('/alert');
+       res.redirect('/alert');
     }
 });
 
