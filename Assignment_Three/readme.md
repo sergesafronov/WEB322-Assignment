@@ -5,31 +5,31 @@
 1. Download the project
 
 2. Navigate to the root directory and install all the dependencies
-   listed in package.json of the project and run `npm install`
+   listed in package.json of the project by executing `npm install`.
 
 ## Application start
 
-To run application please use `npm start`
+To run application please use `npm start`.
 
-Then connect to `localhost:8080`
+Then connect to `localhost:8080`.
 
 ## Login
 
-To login please use any email and password from `data/fakeUsers.json`
+To login please use any email and password from `data/fakeUsers.json`.
 
-Example - Email: `Kristina68@hotmail.com` Password:`0p91XkC2iIy44CF`
+Example - Email: `Kristina68@hotmail.com`, Password: `0p91XkC2iIy44CF`.
 
 ## Endpoints check
 
-To check endpoints go to https://www.postman.com/ download, install and run Postman Agent to be able to check local hosts.
+To check the endpoints go to https://www.postman.com/ download, install and run Postman Agent to be able to check local hosts.
 
 Through the Postman website -> `My Workspace` create the following requests:
 
 GET: `http://localhost:8080/api/products`
 
-GET: `http://localhost:8080/api/products/1`  `1` is an ID
+GET: `http://localhost:8080/api/products/1`  `1` is an ID.
 
-DELETE: `http://localhost:8080/api/products/1`  `1` is an ID
+DELETE: `http://localhost:8080/api/products/1`  `1` is an ID.
 
 POST: `http://localhost:8080/api/products` 
 
@@ -69,6 +69,6 @@ POST: `http://localhost:8080/api/products`
 6. Submit the request.
 
 
-In the same way users' endpoints can be checked.
+In the same way the users' endpoints can be checked.
 
 
