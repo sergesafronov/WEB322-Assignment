@@ -47,7 +47,7 @@ Through the Postman website -> `My Workspace` create a request:
 ## Please use the following data samples
 
 
-<u>Users</u>
+> Users
 
 GET: `http://localhost:8080/api/list`
 
@@ -69,7 +69,7 @@ POST: `http://localhost:8080/api/create`
           }
 
 
-<u>Products</u>
+> Products
 
 GET: `http://localhost:8080/api/products`
 
@@ -101,13 +101,13 @@ POST: `http://localhost:8080/api/products`
          }
 
 
-<u>Orders</u>
+> Orders
 
 GET: `http://localhost:8080/api/orders`
 
-GET: `http://localhost:8080/api/orders/1`  `1` is an ID.
+GET: `http://localhost:8080/api/orders/320`  `320` is an ID.
 
-DELETE: `http://localhost:8080/api/orders/1`  `1` is an ID.
+DELETE: `http://localhost:8080/api/orders/320`  `320` is an ID.
 
 POST: `http://localhost:8080/api/orders` 
 

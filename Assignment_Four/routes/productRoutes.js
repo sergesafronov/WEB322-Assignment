@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { Product } = require('../models');
+const { Product, sequelize } = require('../models');
 
 // GET products
 router.get('/products', async (req, res) => {
@@ -33,22 +33,36 @@ router.get('/products/:id', async (req, res) => {
 
 // POST a product
 router.post('/products', async (req, res) => {
+    let transaction;
     try {
-        const newProduct = await Product.create(req.body);
+        transaction = await sequelize.transaction();
+
+        const newProduct = await Product.create(req.body, { transaction });
+        await transaction.commit();
         res.json(newProduct);
     } catch (error) {
         console.error(error);
+        if (transaction) {
+            await transaction.rollback();
+        }
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
 
 // DELETE a product
 router.delete('/products/:id', async (req, res) => {
+    let transaction;
     try {
-        await Product.destroy({ where: { id: parseInt(req.params.id) } });
+        transaction = await sequelize.transaction();
+
+        await Product.destroy({ where: { id: parseInt(req.params.id) }, transaction });
+        await transaction.commit();
         res.json({ success: true });
     } catch (error) {
         console.error(error);
+        if (transaction) {
+            await transaction.rollback();
+        }
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });

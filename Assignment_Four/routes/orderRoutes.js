@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { Order } = require('../models');
+const { Order, sequelize } = require('../models');
 
 // GET orders
 router.get('/orders', async (req, res) => {
@@ -15,7 +15,7 @@ router.get('/orders', async (req, res) => {
     }
 });
 
-// GEt an order
+// GET an order
 router.get('/orders/:id', async (req, res) => {
     try {
         const orderId = parseInt(req.params.id);
@@ -33,22 +33,36 @@ router.get('/orders/:id', async (req, res) => {
 
 // POST an order
 router.post('/orders', async (req, res) => {
+    let transaction;
     try {
-        const newOrder = await Order.create(req.body);
+        transaction = await sequelize.transaction();
+
+        const newOrder = await Order.create(req.body, { transaction });
+        await transaction.commit();
         res.json(newOrder);
     } catch (error) {
         console.error(error);
+        if (transaction) {
+            await transaction.rollback();
+        }
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
 
 // DELETE an order
 router.delete('/orders/:id', async (req, res) => {
+    let transaction;
     try {
-        await Order.destroy({ where: { id: parseInt(req.params.id) } });
+        transaction = await sequelize.transaction();
+
+        await Order.destroy({ where: { id: parseInt(req.params.id) }, transaction });
+        await transaction.commit();
         res.json({ success: true });
     } catch (error) {
         console.error(error);
+        if (transaction) {
+            await transaction.rollback();
+        }
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });

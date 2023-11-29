@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { User } = require('../models');
+const { User, sequelize } = require('../models');
 
 // Alert page
 router.get('/alert', (req, res) => {
@@ -39,24 +39,39 @@ router.get('/details/:id', async (req, res) => {
 
 // POST a user
 router.post('/create', async (req, res) => {
+    let transaction;
     try {
-        const newUser = await User.create(req.body);
+        transaction = await sequelize.transaction();
+
+        const newUser = await User.create(req.body, { transaction });
+        await transaction.commit();
         res.redirect('/details/' + newUser.id);
     } catch (error) {
         console.error(error);
+        if (transaction) {
+            await transaction.rollback();
+        }
         res.status(500).render('error', { title: 'Error', error: 'Internal Server Error' });
     }
 });
 
 // DELETE a user
 router.delete('/delete/:id', async (req, res) => {
+    let transaction;
     try {
-        await User.destroy({ where: { id: parseInt(req.params.id) } });
-        res.redirect('/list'); // Redirect to the list page after deletion
+        transaction = await sequelize.transaction();
+
+        await User.destroy({ where: { id: parseInt(req.params.id) }, transaction });
+        await transaction.commit();
+        res.redirect('/list');
     } catch (error) {
         console.error(error);
+        if (transaction) {
+            await transaction.rollback();
+        }
         res.status(500).render('error', { error: 'Internal Server Error' });
     }
 });
+
 
 module.exports = router;
