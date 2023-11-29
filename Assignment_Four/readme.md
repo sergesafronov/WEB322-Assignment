@@ -47,7 +47,7 @@ Through the Postman website -> `My Workspace` create a request:
 ## Please use the following data samples
 
 
-> Users
+### Users
 
 GET: `http://localhost:8080/api/list`
 
@@ -69,7 +69,7 @@ POST: `http://localhost:8080/api/create`
           }
 
 
-> Products
+### Products
 
 GET: `http://localhost:8080/api/products`
 
@@ -101,7 +101,7 @@ POST: `http://localhost:8080/api/products`
          }
 
 
-> Orders
+### Orders
 
 GET: `http://localhost:8080/api/orders`
 
