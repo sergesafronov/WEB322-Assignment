@@ -2,10 +2,10 @@
 
 ## Setup  
 
-1. Download the project
+Download the project.
 
-2. Navigate to the root directory and install all the dependencies
-   listed in package.json of the project by executing `npm install`.
+Navigate to the root directory and install all the dependencies
+listed in package.json of the project by executing `npm install`.
 
 ## Application start
 
@@ -30,11 +30,19 @@ To check the endpoints go to https://www.postman.com/ download, install and run 
 Through the Postman website -> `My Workspace` create a request:
 
 
-1. Select a method `GET`, `DELETE` or `POST`.
+1. Select a method `GET`, `DELETE`.
 
-2. Entering URL.
+2. Enter URL.
 
-2. Switch to the Body tab.
+3. Submit the request.
+
+* ### OR
+
+1. Select a method `POST`.
+
+2. Enter URL.
+
+3. Switch to the Body tab.
 
 3. Select the raw radio button.
 
@@ -121,7 +129,4 @@ POST: `http://localhost:8080/api/orders`
             "updatedAt": "2023-11-29 04:58:56.354+00"
           }
 
-
-
-
-
+          

@@ -17,7 +17,17 @@ module.exports = (sequelize, DataTypes) => {
         brand: DataTypes.STRING,
         category: DataTypes.STRING,
         thumbnail: DataTypes.STRING,
-        images: DataTypes.JSON 
+        images: DataTypes.JSON,
+        createdAt: DataTypes.DATE,
+        updatedAt: DataTypes.DATE
     });
+
+    Product.associate = (models) => {
+        Product.hasMany(models.Order, {
+            foreignKey: 'productId',
+            as: 'orders'
+        });
+    };
+    
     return Product;
 };

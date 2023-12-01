@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { User, sequelize } = require('../models');
+const { User, Order, sequelize } = require('../models');
 
 // Alert page
 router.get('/alert', (req, res) => {
@@ -12,7 +12,9 @@ router.get('/alert', (req, res) => {
 // GET users
 router.get('/list', async (req, res) => {
     try {
-        const users = await User.findAll();
+        const users = await User.findAll({
+            order: [['id', 'ASC']],
+          });
         res.render('list', { title: 'User List', users });
     } catch (error) {
         console.error(error);
@@ -24,9 +26,14 @@ router.get('/list', async (req, res) => {
 router.get('/details/:id', async (req, res) => {
     try {
         const userId = parseInt(req.params.id);
-        const user = await User.findByPk(userId);
+        const user = await User.findByPk(userId, {
+            include: [{
+                model: Order,
+                as: 'orders' // Make sure this alias matches the one defined in the association.
+            }]
+        });
         if (user) {
-            res.render('details', { title: 'User Details', user });
+            res.render('details', { title: 'User Details', user: user });
         } else {
             console.error(error);
             res.status(404).render('error', { error: 'User not found' });

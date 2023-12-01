@@ -2,24 +2,18 @@
 
 const express = require('express');
 const router = express.Router();
-const { Order, sequelize } = require('../models');
-
-// GET orders
-router.get('/orders', async (req, res) => {
-    try {
-        const orders = await Order.findAll();
-        res.json(orders);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
+const { Order, User, Product, sequelize } = require('../models');
 
 // GET an order
 router.get('/orders/:id', async (req, res) => {
     try {
         const orderId = parseInt(req.params.id);
-        const order = await Order.findByPk(orderId);
+        const order = await Order.findByPk(orderId, {
+            include: [
+                { model: User, as: 'user' },
+                { model: Product, as: 'product' }
+            ]
+        });
         if (order) {
             res.json(order);
         } else {
@@ -30,6 +24,22 @@ router.get('/orders/:id', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+
+
+// GET orders
+router.get('/orders', async (req, res) => {
+    try {
+        const orders = await Order.findAll({
+            order: [['id', 'ASC']],
+          });
+        res.json(orders);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 
 // POST an order
 router.post('/orders', async (req, res) => {

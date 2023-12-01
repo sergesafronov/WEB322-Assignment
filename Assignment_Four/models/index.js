@@ -9,11 +9,16 @@ const sequelize = new Sequelize('SenecaDB', 'sergesafronov', 'JlUXy8SdDHV1', {
     dialectOptions: {
       ssl: { rejectUnauthorized: false },
     },
-    query: { raw: true },
+    query: { raw: false },
 });
+
+async function sync() {
+  await sequelize.sync({ alter: true });
+  console.log('Database synchronized successfully.');
+}
 
 const User = require('./user')(sequelize, Sequelize.DataTypes);
 const Product = require('./product')(sequelize, Sequelize.DataTypes);
 const Order = require('./order')(sequelize, Sequelize.DataTypes);
 
-module.exports = { sequelize, Sequelize, User, Product, Order };
+module.exports = { sequelize, Sequelize, User, Product, Order, sync };

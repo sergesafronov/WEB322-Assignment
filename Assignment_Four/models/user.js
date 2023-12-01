@@ -27,8 +27,19 @@ module.exports = (sequelize, DataTypes) => {
         },
         dob: DataTypes.DATE,
         company: DataTypes.STRING,
-        phone: DataTypes.STRING
+        phone: DataTypes.STRING,
+        company: DataTypes.STRING,
+        phone: DataTypes.STRING,        
+        createdAt: DataTypes.DATE,       
+        updatedAt: DataTypes.DATE       
     });
+
+    User.associate = (models) => {
+        User.hasMany(models.Order, {
+            foreignKey: 'userId',
+            as: 'orders'
+        });
+    };
 
     return User;
 };

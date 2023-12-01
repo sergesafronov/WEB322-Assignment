@@ -7,7 +7,9 @@ const { Product, sequelize } = require('../models');
 // GET products
 router.get('/products', async (req, res) => {
     try {
-        const products = await Product.findAll();
+        const products = await Product.findAll({
+            order: [['id', 'ASC']],
+          });
         res.json(products);
     } catch (error) {
         console.error(error);

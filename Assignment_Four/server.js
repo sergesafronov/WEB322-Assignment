@@ -23,7 +23,7 @@
 //
 // 8) npm run start - starts a server with nodemon.
 
-// SERVER.JS
+// server.js
 
 const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
@@ -47,6 +47,12 @@ app.use(userRoutes);
 app.use('/api/', userRoutes);
 app.use('/api/', productRoutes);
 app.use('/api/', orderRoutes);
+
+// Model associations
+User.associate({ User, Product, Order });
+Product.associate({ User, Product, Order });
+Order.associate({ User, Product, Order });
+
 
 sequelize.authenticate()
   .then(() => {

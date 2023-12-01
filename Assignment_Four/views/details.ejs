@@ -1,9 +1,10 @@
 <style>
     body {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 70vh;
+        height: 100vh;
     }
 
     .details {
@@ -11,7 +12,25 @@
         padding: 20px;
         border: 1px solid #33333333; 
         border-radius: 10px; 
+        margin-bottom: 20px;
     }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {background-color: #f5f5f5;}
 </style>
 
 <body>
@@ -27,5 +46,33 @@
         <p><strong>Phone:</strong> <%= user.phone %></p>
         <a href="/list">Back to the list</a>
     </div>
+    <% if (user.orders && user.orders.length) { %>
+        <div class="orders">
+            <h2>Orders</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Product ID</th>
+                        <th>Order Date</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% user.orders.forEach(order => { %>
+                        <tr>
+                            <td><%= order.id %></td>
+                            <td><%= order.productId %></td>
+                            <td><%= order.orderDate %></td>
+                            <td><%= order.createdAt %></td>
+                            <td><%= order.updatedAt %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    <% } else { %>
+        <p>No orders found for this user.</p>
+    <% } %>
 </body>
-
