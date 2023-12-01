@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { Product, sequelize } = require('../models');
+const { Product, Order, sequelize } = require('../models');
 
 // GET products
 router.get('/products', async (req, res) => {
@@ -51,13 +51,24 @@ router.post('/products', async (req, res) => {
     }
 });
 
-// DELETE a product
+// DELETE a product and its orders
 router.delete('/products/:id', async (req, res) => {
     let transaction;
     try {
         transaction = await sequelize.transaction();
 
-        await Product.destroy({ where: { id: parseInt(req.params.id) }, transaction });
+        const productId = parseInt(req.params.id);
+
+        await Order.destroy({
+            where: { productId: productId },
+            transaction: transaction
+        });
+
+        await Product.destroy({
+            where: { id: productId },
+            transaction: transaction
+        });
+
         await transaction.commit();
         res.json({ success: true });
     } catch (error) {

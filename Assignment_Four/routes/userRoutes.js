@@ -29,7 +29,7 @@ router.get('/details/:id', async (req, res) => {
         const user = await User.findByPk(userId, {
             include: [{
                 model: Order,
-                as: 'orders' // Make sure this alias matches the one defined in the association.
+                as: 'orders'
             }]
         });
         if (user) {
@@ -62,14 +62,26 @@ router.post('/create', async (req, res) => {
     }
 });
 
-// DELETE a user
+// DELETE a user and related orders
 router.delete('/delete/:id', async (req, res) => {
     let transaction;
     try {
         transaction = await sequelize.transaction();
 
-        await User.destroy({ where: { id: parseInt(req.params.id) }, transaction });
+        const userId = parseInt(req.params.id);
+
+        await Order.destroy({
+            where: { userId: userId },
+            transaction: transaction
+        });
+
+        await User.destroy({
+            where: { id: userId },
+            transaction: transaction
+        });
+
         await transaction.commit();
+
         res.redirect('/list');
     } catch (error) {
         console.error(error);
@@ -79,6 +91,5 @@ router.delete('/delete/:id', async (req, res) => {
         res.status(500).render('error', { error: 'Internal Server Error' });
     }
 });
-
 
 module.exports = router;
