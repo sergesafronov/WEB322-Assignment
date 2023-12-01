@@ -36,7 +36,7 @@ Through the Postman website -> `My Workspace` create a request:
 
 3. Submit the request.
 
-* or
+* OR
 
 1. Select a method `POST`.
 
