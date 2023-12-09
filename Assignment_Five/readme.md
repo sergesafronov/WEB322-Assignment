@@ -1,6 +1,6 @@
 # Readme
 
-## Tne application Cyclic link
+## The application Cyclic link
 
 [https://coffee-bull-cuff.cyclic.app](https://coffee-bull-cuff.cyclic.app)
 
@@ -16,11 +16,11 @@ To check the endpoints go to https://www.postman.com/
 
 Through the Postman website -> `My Workspace` 
 
-* All the requests can be imported into Postman by using this file.
+All the requests can be imported into Postman by using this file.
 
 [Project_Cyclic_Postman_Collection.json](https://github.com/sergesafronov/WEB322-Serge-Safronov/tree/main/Assignment_Five/Project_Cyclic_Postman_Collection.json)
 
-* Alternatively, you can manually create the requests:
+Alternatively, you can manually create the requests:
 
 1. Select a method `GET`, `DELETE`.
 
