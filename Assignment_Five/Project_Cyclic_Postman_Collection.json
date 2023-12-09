@@ -1,0 +1,335 @@
+{
+	"info": {
+		"_postman_id": "09866478-e8bf-4f5f-8aa1-0ab5e1c145f4",
+		"name": "WEB322 Project Cyclic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31121151"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "GET Login page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://coffee-bull-cuff.cyclic.app/",
+							"protocol": "https",
+							"host": [
+								"coffee-bull-cuff",
+								"cyclic",
+								"app"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "GET all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://coffee-bull-cuff.cyclic.app/api/users",
+							"protocol": "https",
+							"host": [
+								"coffee-bull-cuff",
+								"cyclic",
+								"app"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET a user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://coffee-bull-cuff.cyclic.app/api/users/1",
+							"protocol": "https",
+							"host": [
+								"coffee-bull-cuff",
+								"cyclic",
+								"app"
+							],
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE a user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://coffee-bull-cuff.cyclic.app/api/users/1",
+							"protocol": "https",
+							"host": [
+								"coffee-bull-cuff",
+								"cyclic",
+								"app"
+							],
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST a user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"firstName\": \"Karen\",\r\n        \"lastName\": \"Yundt\",\r\n        \"email\": \"Kristina68@hotmail.com\",\r\n        \"password\": \"0p91XkC2iIy44CF\",\r\n        \"dob\": \"2022-10-20T11:12:02.084Z\",\r\n        \"company\": \"Kuhic Inc\",\r\n        \"phone\": \"(796) 606-8670 x2136\"\r\n      }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://coffee-bull-cuff.cyclic.app/api/users",
+							"protocol": "https",
+							"host": [
+								"coffee-bull-cuff",
+								"cyclic",
+								"app"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://coffee-bull-cuff.cyclic.app/api/products",
+							"protocol": "https",
+							"host": [
+								"coffee-bull-cuff",
+								"cyclic",
+								"app"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET a product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://coffee-bull-cuff.cyclic.app/api/products/1",
+							"protocol": "https",
+							"host": [
+								"coffee-bull-cuff",
+								"cyclic",
+								"app"
+							],
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE a product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://coffee-bull-cuff.cyclic.app/api/products/1",
+							"protocol": "https",
+							"host": [
+								"coffee-bull-cuff",
+								"cyclic",
+								"app"
+							],
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST a product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n         \"id\": 1,\r\n         \"title\": \"iPhone 9\",\r\n         \"description\": \"An apple mobile which is nothing like apple\",\r\n         \"price\": 549,\r\n         \"discountPercentage\": 12.96,\r\n         \"rating\": 4.69,\r\n         \"stock\": 94,\r\n         \"brand\": \"Apple\",\r\n         \"category\": \"smartphones\",\r\n         \"thumbnail\": \"https://i.dummyjson.com/data/products/1/thumbnail.jpg\",\r\n         \"images\": [\r\n           \"https://i.dummyjson.com/data/products/1/1.jpg\",\r\n           \"https://i.dummyjson.com/data/products/1/2.jpg\",\r\n           \"https://i.dummyjson.com/data/products/1/3.jpg\",\r\n           \"https://i.dummyjson.com/data/products/1/4.jpg\",\r\n           \"https://i.dummyjson.com/data/products/1/thumbnail.jpg\"\r\n         ]\r\n     }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://coffee-bull-cuff.cyclic.app/api/products",
+							"protocol": "https",
+							"host": [
+								"coffee-bull-cuff",
+								"cyclic",
+								"app"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "GET all orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://coffee-bull-cuff.cyclic.app/api/orders",
+							"protocol": "https",
+							"host": [
+								"coffee-bull-cuff",
+								"cyclic",
+								"app"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET an order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://coffee-bull-cuff.cyclic.app/api/orders/320",
+							"protocol": "https",
+							"host": [
+								"coffee-bull-cuff",
+								"cyclic",
+								"app"
+							],
+							"path": [
+								"api",
+								"orders",
+								"320"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE an order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://coffee-bull-cuff.cyclic.app/api/orders/320",
+							"protocol": "https",
+							"host": [
+								"coffee-bull-cuff",
+								"cyclic",
+								"app"
+							],
+							"path": [
+								"api",
+								"orders",
+								"320"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST an order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 320,\r\n        \"userId\": 1,\r\n        \"productId\": 32,\r\n        \"orderDate\": \"2023-11-14 07:49:26.973+00\",\r\n        \"createdAt\": \"2023-11-29 04:58:56.354+00\",\r\n        \"updatedAt\": \"2023-11-29 04:58:56.354+00\"\r\n      }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://coffee-bull-cuff.cyclic.app/api/orders",
+							"protocol": "https",
+							"host": [
+								"coffee-bull-cuff",
+								"cyclic",
+								"app"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
