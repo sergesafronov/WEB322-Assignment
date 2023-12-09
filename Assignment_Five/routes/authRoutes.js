@@ -1,4 +1,4 @@
-// authRoutes.js
+// routes/authRoutes.js
 
 const express = require('express');
 const router = express.Router();
@@ -10,13 +10,18 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { email, password } = req.body; 
-    const result = authService.authenticate(email, password);
+    const { username, password } = req.body;
+
+    const result = authService.authenticate(username, password);
 
     if (result.isAuthenticated) {
-        res.redirect('/users');
+
+        req.session.user = result.user;
+        req.session.isAuthenticated = true;
+
+        res.redirect('/api/users');
     } else {
-       res.redirect('/alert');
+        res.redirect('/alert'); 
     }
 });
 

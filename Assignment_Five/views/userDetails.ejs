@@ -1,37 +1,41 @@
-<style>
-    body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-    }
+<!-- views/userDetails.ejs -->
 
-    .details {
-        text-align: left; 
-        padding: 20px;
-        border: 1px solid #33333333; 
-        border-radius: 10px; 
-        margin-bottom: 20px;
-    }
+<head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
 
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
+        .details {
+            text-align: left; 
+            padding: 20px;
+            border: 1px solid #33333333; 
+            border-radius: 10px; 
+            margin-bottom: 20px;
+        }
 
-    th, td {
-        text-align: left;
-        padding: 8px;
-        border-bottom: 1px solid #ddd;
-    }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-    th {
-        background-color: #f2f2f2;
-    }
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
 
-    tr:hover {background-color: #f5f5f5;}
-</style>
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {background-color: #f5f5f5;}
+    </style>
+</head>
 
 <body>
     <div class="details">
@@ -44,7 +48,7 @@
         <p><strong>DOB:</strong> <%= user.dob %></p>
         <p><strong>Company:</strong> <%= user.company %></p>
         <p><strong>Phone:</strong> <%= user.phone %></p>
-        <a href="/users">Back to the list</a>
+        <a href="/api/users" class="btn btn-secondary mt-3">Back to the list</a>
     </div>
     <% if (user.orders && user.orders.length) { %>
         <div class="orders">

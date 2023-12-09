@@ -2,10 +2,22 @@
 
 const { Product, Order, sequelize } = require('../models');
 
-const getAllProducts = async () => {
-    return await Product.findAll({
+
+const getAllProducts = async (page = 1, limit = 25) => {
+    const offset = (page - 1) * limit;
+    const products = await Product.findAll({
+        limit: limit,
+        offset: offset,
         order: [['id', 'ASC']],
     });
+    const totalProducts = await Product.count();
+    return {
+        products,
+        totalProducts,
+        currentPage: page,
+        hasNextPage: offset + limit < totalProducts,
+        hasPreviousPage: page > 1
+    };
 };
 
 const getProductById = async (productId) => {

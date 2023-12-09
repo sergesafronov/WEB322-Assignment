@@ -2,10 +2,22 @@
 
 const { User, Order, sequelize } = require('../models');
 
-const getAllUsers = async () => {
-    return await User.findAll({
+
+const getAllUsers = async (page = 1, limit = 25) => {
+    const offset = (page - 1) * limit;
+    const users = await User.findAll({
+        limit: limit,
+        offset: offset,
         order: [['id', 'ASC']],
     });
+    const totalUsers = await User.count();
+    return {
+        users,
+        totalUsers,
+        currentPage: page,
+        hasNextPage: offset + limit < totalUsers,
+        hasPreviousPage: page > 1
+    };
 };
 
 const getUserById = async (userId) => {

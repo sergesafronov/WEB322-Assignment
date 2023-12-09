@@ -1,4 +1,4 @@
-// product.js
+// models/product.js
 
 module.exports = (sequelize, DataTypes) => {
     const Product = sequelize.define('product', {

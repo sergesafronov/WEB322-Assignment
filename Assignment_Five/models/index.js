@@ -1,4 +1,4 @@
-//index.js
+// models/index.js
 
 const Sequelize = require('sequelize');
 
